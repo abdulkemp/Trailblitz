@@ -40,7 +40,7 @@ export default {
 
 .logo {
     width: 150px;
-    height: 40px;
+    height: 30px;
 }
 
 .logo img {

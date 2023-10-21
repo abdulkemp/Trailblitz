@@ -67,6 +67,8 @@ export default {
     align-items: center;
     color: white;
     padding-bottom: 3rem;
+    font-family: 'Lobster Two', sans-serif;
+    /* font-weight: bold; */
 }
 
 #abouthome .abouthome {
@@ -100,6 +102,10 @@ export default {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.brief p{
+    font-size: 25px;
 }
 
 .amount {

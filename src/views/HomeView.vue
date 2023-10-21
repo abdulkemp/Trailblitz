@@ -35,15 +35,16 @@ export default {
     background-repeat: no-repeat;
     background-color: black;
     color: white;
+    font-family: 'Lobster Two', sans-serif;
 }
 
 .slogan {
-    width: 50%;
+    width: 30%;
     height: 50%;
     /* border: 2px solid red; */
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: 75px;
     text-align: center;
     font-size: 15px;
 }
