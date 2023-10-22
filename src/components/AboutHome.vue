@@ -114,20 +114,22 @@ export default {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-
+    /* border: 2px solid red; */
 }
 
 .amount ul {
     display: flex;
     justify-content: space-between;
-    align-items: start;
+    align-items: end;
     width: 80%;
+    /* border: 2px solid red; */
 }
 
 ul li {
     list-style: none;
     text-wrap: wrap;
     margin-top: 2rem;
+    /* border: 2px solid yellow; */
 }
 
 ul li h2 {
@@ -146,6 +148,7 @@ ul li h2 {
 
 #vehi {
     gap: 0;
+    /* padding-bottom: 10px; */
     margin-top: 2px;
 }
 

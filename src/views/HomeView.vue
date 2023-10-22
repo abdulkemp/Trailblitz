@@ -39,12 +39,11 @@ export default {
 }
 
 .slogan {
-    width: 30%;
+    width: 20%;
     height: 50%;
-    /* border: 2px solid red; */
     position: absolute;
     bottom: 0;
-    left: 75px;
+    left: 115px;
     text-align: center;
     font-size: 15px;
 }
