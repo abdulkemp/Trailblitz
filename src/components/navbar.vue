@@ -12,11 +12,11 @@
     </div>
     <div class="menu">
       <ul>
-        <li><a href="#product">Products</a></li>
+        <li><a href=""><router-link to="/collection">Collection</router-link></a></li>
         <li>
-          <a href=""><router-link to="/about">About Us</router-link></a>
+          <a href=""><router-link to="/shop">Shop</router-link></a>
         </li>
-        <li><a href="#contact">Contact Us</a></li>
+        <li><a href=""><router-link to="/contact">Contact Us</router-link></a></li>
         <li>
           <svg
             viewBox="0 0 24 24"

@@ -28,7 +28,7 @@
     </div>
 
     <div class="feature">
-      <h1>Featured Vehicles</h1>
+      <!-- <h1>Featured Vehicles</h1> -->
       <div class="catergory">
         <div class="background-img1">
           <h2>Motorcycles</h2>
@@ -243,7 +243,7 @@ p {
   flex-wrap: wrap;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
-  gap: 25px 25px;
+  gap: 4rem 4rem;
   grid-auto-flow: row;
   grid-template-areas: "item-1 item-2 item-3";
   display: flex;
@@ -304,11 +304,22 @@ p {
   font-size: 18px;
   background-color: rgb(121, 139, 133);
   border-radius: 15px;
+  margin-bottom: 1rem;
 }
 
 .see button:hover {
   background-color: rgba(37, 37, 37, 0.685);
   color: white;
   transition-duration: 1.1s;
+}
+
+.catergory h2{
+  width: 100%;
+  height: 100%;
+  font-size: 15rem;
+  backdrop-filter: blur(3px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

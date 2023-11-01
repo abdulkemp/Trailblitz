@@ -179,7 +179,8 @@ export default {
 
 .top-head {
   text-wrap: wrap;
-  margin-top: 1rem;
+  margin-top: 6rem;
+  margin-bottom: 6rem;
   width: 80%;
   line-height: 2rem;
 }
@@ -213,7 +214,7 @@ export default {
 }
 
 .third-head {
-  margin-top: 2rem;
+  margin-top: 13rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
@@ -223,7 +224,7 @@ export default {
     "left-text right-img"
     "second-text second-text";
   width: 80%;
-  height: 100%;
+  height: fit-content;
 }
 
 .left-text {
@@ -244,12 +245,13 @@ export default {
 
 .second-text {
   grid-area: second-text;
+  height: fit-content;
 }
 
 .last-head {
   height: 100%;
   text-wrap: wrap;
-  /* margin-top: 1rem; */
+  margin-bottom: 4rem;
   width: 80%;
   /* border: 2px solid red; */
   display: flex;
@@ -265,7 +267,7 @@ export default {
 
 .bottom{
   width: 100%;
-  height: 50%;
+  height: fit-content;
 }
 
 .top img{

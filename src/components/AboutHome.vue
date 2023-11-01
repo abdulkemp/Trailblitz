@@ -122,23 +122,19 @@ export default {
     justify-content: space-between;
     align-items: end;
     width: 80%;
-    /* border: 2px solid red; */
 }
 
 ul li {
     list-style: none;
     text-wrap: wrap;
     margin-top: 2rem;
-    /* border: 2px solid yellow; */
+    width: fit-content;
 }
 
 ul li h2 {
     font-size: 40px;
 }
 
-#text {
-    width: 30%;
-}
 
 .amount svg {
     width: 45px;
