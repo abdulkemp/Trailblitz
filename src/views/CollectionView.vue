@@ -260,6 +260,11 @@ export default {
     height: 100%;
     background-color: black;
 }
+/* #collection {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+} */
 
 .collection {
     width: 100%;
