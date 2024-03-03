@@ -4,7 +4,7 @@
       <div class="logo">
         <a href="/home">
           <img
-            src="https://i.postimg.cc/MGrkRjwx/trailblitz-high-resolution-logo-color-on-transparent-background.png"
+            src="https://i.ibb.co/9pM7gD4/logo-no-background.png"
             alt=""
           />
         </a>

@@ -30,7 +30,7 @@ export default {
 #home {
     width: 100%;
     height: 100vh;
-    background-image: url(https://i.postimg.cc/Hs67gcxC/josh-nuttall-zk-Vi57-UYHIQ-unsplash.jpg);
+    background-image: url(https://i.ibb.co/ZVHnFn7/josh-nuttall-zk-Vi57-UYHIQ-unsplash.jpg);
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-color: black;

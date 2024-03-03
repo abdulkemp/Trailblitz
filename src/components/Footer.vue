@@ -4,11 +4,11 @@
       <div class="footers">
         <div class="left">
           <div class="logo">
-            <img src="https://i.postimg.cc/MGrkRjwx/trailblitz-high-resolution-logo-color-on-transparent-background.png"
+            <img src="https://i.ibb.co/9pM7gD4/logo-no-background.png"
               alt="" />
           </div>
           <div class="slogon">
-            <h3>ADVENTURE AWAITS ON TWO-WHEELS</h3>
+            <!-- <h3>ADVENTURE AWAITS ON TWO-WHEELS</h3> -->
             <p>
               Trailblitz: Your online hub for top-quality bikes and motorbikes, catering
               to all riders with style, performance, and a seamless shopping experience.
@@ -196,6 +196,8 @@ footer .left {
   width: 100%;
   height: 100%;
 }
+
+
 
 .slogon {
   font-size: 12px;

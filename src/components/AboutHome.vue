@@ -2,7 +2,7 @@
     <div id="abouthome">
         <div class="abouthome">
             <div class="image-logo">
-                <img src="https://i.postimg.cc/mDd9J21R/trailblitz-high-resolution-logo-color-on-transparent-background.png"
+                <img src="https://i.ibb.co/9pM7gD4/logo-no-background.png"
                     alt="">
             </div>
             <div class="brief">
