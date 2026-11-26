@@ -1,0 +1,23 @@
+/*
+ * Tailwind v4 without its Preflight reset, so Trailblitz's existing
+ * scoped styles keep looking the way they did. The theme and utilities
+ * are all the Base* UI components need.
+ * To switch to the full reset (as in LatestPorfolio), replace the
+ * three lines below with: @import "tailwindcss";
+ */
+@layer theme, base, components, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+/* Global styles moved here from the old public/index.html */
+* {
+  font-family: 'Oswald', sans-serif;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
