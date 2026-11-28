@@ -1,50 +1,41 @@
 # Trailblitz
 
-A Vue 3 storefront site with Home, About, Shop, Collection and Contact pages.
+A motorcycle storefront site: a Vue 3 frontend with an Express + MySQL API.
 
-Built with [Vite](https://vite.dev), [Vue Router](https://router.vuejs.org), [Tailwind CSS v4](https://tailwindcss.com) and a shared global UI component library (`Base*` components).
+```
+Trailblitz/
+  frontend/   Vue 3 + Vite + Tailwind site
+  backend/    Express API + MySQL database
+```
 
-## Project setup
+## Getting started
+
+You need [Node.js](https://nodejs.org) 20.19 or newer, and either [Docker](https://www.docker.com/products/docker-desktop/) or your own MySQL server.
+
+### 1. Start the database and API
 
 ```sh
+cd backend
 npm install
+cp .env.example .env       # PowerShell: Copy-Item .env.example .env
+docker compose up -d       # starts MySQL and creates the tables + starter products
+npm run dev                # API on http://localhost:3000
 ```
 
-### Develop with hot reload
+Using your own MySQL (XAMPP, MySQL Workbench, etc.) instead of Docker? Put your details in `backend/.env`, then run `npm run db:setup` instead of `docker compose up -d`.
+
+Check it works: open http://localhost:3000/api/health. You should see `{"status":"ok"}`.
+
+### 2. Start the frontend
+
+In a second terminal:
 
 ```sh
-npm run dev
+cd frontend
+npm install
+npm run dev                # site on http://localhost:5173
 ```
 
-### Build for production
+The frontend sends `/api` requests to the backend automatically while developing.
 
-```sh
-npm run build
-```
-
-### Preview the production build
-
-```sh
-npm run preview
-```
-
-### Format source files
-
-```sh
-npm run format
-```
-
-## Global UI components
-
-Every component in `src/components/UI` is registered globally by `src/plugins/globalComponents.js`, so you can use them in any template without importing them:
-
-```vue
-<BaseButton>Shop now</BaseButton>
-<BaseBadge>New</BaseBadge>
-```
-
-To add a component, create it in `src/components/UI` and export it from `src/components/UI/index.js`. Examples for each component are in [`src/components/UI/USAGE_DOCS.md`](src/components/UI/USAGE_DOCS.md).
-
-## Tailwind
-
-Tailwind is loaded in `src/assets/main.css` **without** its Preflight CSS reset, so the existing page styles look the same as before. To switch on the full reset, replace the Tailwind imports in that file with `@import "tailwindcss";`.
+More detail: [frontend/README.md](frontend/README.md) · [backend/README.md](backend/README.md)

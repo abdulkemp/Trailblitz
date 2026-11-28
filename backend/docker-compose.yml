@@ -1,0 +1,32 @@
+# MySQL for local development.
+#   Start:  docker compose up -d
+#   Stop:   docker compose down
+#   Reset:  docker compose down -v   (deletes all data, then re-seeds on next start)
+#
+# The first time it starts, MySQL runs db/schema.sql and db/seed.sql,
+# so the tables and starter products are created automatically.
+
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: trailblitz-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: trailblitz
+      MYSQL_USER: trailblitz
+      MYSQL_PASSWORD: trailblitz
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./db/seed.sql:/docker-entrypoint-initdb.d/02-seed.sql:ro
+    healthcheck:
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost', '-uroot', '-proot']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  mysql-data:

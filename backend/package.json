@@ -1,0 +1,20 @@
+{
+  "name": "trailblitz-backend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Express + MySQL API for Trailblitz",
+  "scripts": {
+    "dev": "node --watch --env-file=.env src/server.js",
+    "start": "node --env-file=.env src/server.js",
+    "db:setup": "node --env-file=.env scripts/setup-db.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.0"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  }
+}

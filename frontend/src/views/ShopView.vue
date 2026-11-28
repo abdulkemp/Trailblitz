@@ -18,21 +18,24 @@
                     </div>
                 </div>
                 <div class="wrapper">
+                    <p v-if="loading">Loading…</p>
+                    <BaseAlert v-else-if="error" type="error" title="Couldn't load products" :message="error" :show="true" />
+                    <p v-else-if="items.length === 0">No products yet.</p>
                     <div class="cards" v-for="item in items" :key="item.id">
                         <div class="card">
                             <div class="img">
-                                <img :src="item.image" alt="">
+                                <img :src="item.image_url" :alt="item.name">
                             </div>
                             <div class="first-text">
                                 <div class="title">
-                                    <p>{{ item.prodname }}</p>
+                                    <p>{{ item.name }}</p>
                                 </div>
-                                <div class="price">
-                                    <p>{{ item.prodname }}</p>
+                                <div class="price" v-if="item.price !== null">
+                                    <p>R {{ item.price.toFixed(2) }}</p>
                                 </div>
                             </div>
                             <div class="second-text">
-                                <p>{{ item.desc }}</p>
+                                <p>{{ item.description }}</p>
                             </div>
                         </div>
                     </div>
@@ -46,6 +49,8 @@
 <script>
 import navbar from "@/components/navbar.vue"
 import Footer from "@/components/Footer.vue"
+import { getProducts } from "@/services/api"
+
 export default {
     components: {
         navbar,
@@ -53,47 +58,20 @@ export default {
     },
     data() {
         return {
-            items: [
-                {
-                    id: 1,
-                    prodname: "harley",
-                    image: "https://i.postimg.cc/rmFpKXsn/motocross-4468029-1280.jpg",
-                    desc: "Lorem fghhjkk;kkgfdhhghj fgfxggfhihugykfydthdxfjfgfkghlkhjl; gfhjkglhu;jj kflgh;ijhlghkhhcfhvhj kliufcgfhg,hjjhikujfgcgvhbj"
-                },
-                {
-                    id: 2,
-                    prodname: "James",
-                    image: "https://i.postimg.cc/rmFpKXsn/motocross-4468029-1280.jpg",
-                    desc: "Lorem fghhjkk;kkgfdhhghj fgfxggfhihugykfydthdxfjfgfkghlkhjl; gfhjkglhu;jj kflgh;ijhlghkhhcfhvhj kliufcgfhg,hjjhikujfgcgvhbj"
-                },
-                {
-                    id: 3,
-                    prodname: "John",
-                    image: "https://i.postimg.cc/rmFpKXsn/motocross-4468029-1280.jpg",
-                    desc: "Lorem fghhjkk;kkgfdhhghj fgfxggfhihugykfydthdxfjfgfkghlkhjl; gfhjkglhu;jj kflgh;ijhlghkhhcfhvhj kliufcgfhg,hjjhikujfgcgvhbj"
-                },
-                {
-                    id: 4,
-                    prodname: "harley",
-                    image: "https://i.postimg.cc/rmFpKXsn/motocross-4468029-1280.jpg",
-                    desc: "Lorem fghhjkk;kkgfdhhghj fgfxggfhihugykfydthdxfjfgfkghlkhjl; gfhjkglhu;jj kflgh;ijhlghkhhcfhvhj kliufcgfhg,hjjhikujfgcgvhbj"
-                },
-                {
-                    id: 5,
-                    prodname: "James",
-                    image: "https://i.postimg.cc/rmFpKXsn/motocross-4468029-1280.jpg",
-                    desc: "Lorem fghhjkk;kkgfdhhghj fgfxggfhihugykfydthdxfjfgfkghlkhjl; gfhjkglhu;jj kflgh;ijhlghkhhcfhvhj kliufcgfhg,hjjhikujfgcgvhbj"
-                },
-                {
-                    id: 6,
-                    prodname: "John",
-                    image: "https://i.postimg.cc/rmFpKXsn/motocross-4468029-1280.jpg",
-                    desc: "Lorem fghhjkk;kkgfdhhghj fgfxggfhihugykfydthdxfjfgfkghlkhjl; gfhjkglhu;jj kflgh;ijhlghkhhcfhvhj kliufcgfhg,hjjhikujfgcgvhbj"
-                }
-            ],
+            items: [],
+            loading: true,
+            error: ""
+        }
+    },
+    async created() {
+        try {
+            this.items = await getProducts("shop")
+        } catch (err) {
+            this.error = err.message
+        } finally {
+            this.loading = false
         }
     }
-
 }
 </script>
 
