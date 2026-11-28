@@ -3,30 +3,38 @@
         <navbar />
         <div class="contact">
             <div class="left-form">
-                <form action="" method="POST">
+                <form @submit.prevent="submit" novalidate>
                     <div class="form">
                         <div class="form-group1">
-                            <input type="text" class="form-control" id="name" name="name">
-                            <label for="input">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" v-model="form.name" placeholder=" " required maxlength="100">
+                            <label for="name">Name</label>
+                            <small v-if="fieldErrors.name" class="field-error">{{ fieldErrors.name }}</small>
                         </div>
                         <div class="form-group2">
-                            <input type="email" class="form-control" id="email" name="email">
-                            <label for="input">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" v-model="form.email" placeholder=" " required maxlength="255">
+                            <label for="email">Email</label>
+                            <small v-if="fieldErrors.email" class="field-error">{{ fieldErrors.email }}</small>
                         </div>
                         <div class="form-group3">
-                            <input type="text" class="form-control" id="subject" name="subject">
-                            <label for="input">Subject</label>
+                            <input type="text" class="form-control" id="subject" name="subject" v-model="form.subject" placeholder=" " maxlength="150">
+                            <label for="subject">Subject</label>
+                            <small v-if="fieldErrors.subject" class="field-error">{{ fieldErrors.subject }}</small>
                         </div>
                         <div class="form-group4">
-                            <input type="text" class="form-control" id="number" name="number">
-                            <label for="input">Phone Number</label>
+                            <input type="tel" class="form-control" id="number" name="number" v-model="form.phone" placeholder=" " maxlength="30">
+                            <label for="number">Phone Number</label>
+                            <small v-if="fieldErrors.phone" class="field-error">{{ fieldErrors.phone }}</small>
                         </div>
                         <div class="form-group5">
-                            <textarea class="form-control" id="message" name="message"></textarea>
-                            <label for="input">Message</label>
+                            <textarea class="form-control" id="message" name="message" v-model="form.message" placeholder=" " required maxlength="5000"></textarea>
+                            <label for="message">Message</label>
+                            <small v-if="fieldErrors.message" class="field-error">{{ fieldErrors.message }}</small>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary" :disabled="sending">
+                            {{ sending ? "Sending…" : "Submit" }}
+                        </button>
                     </div>
+                    <BaseAlert v-if="status" :type="status.type" :message="status.message" :show="true" dismissible @close="status = null" />
                 </form>
             </div>
             <div class="right-map">
@@ -67,10 +75,39 @@
 <script>
 import navbar from "@/components/navbar.vue";
 import Footer from "@/components/Footer.vue";
+import { sendContactMessage } from "@/services/api";
+
+const emptyForm = () => ({ name: "", email: "", subject: "", phone: "", message: "" });
+
 export default {
     components: {
         navbar,
         Footer
+    },
+    data() {
+        return {
+            form: emptyForm(),
+            fieldErrors: {},
+            sending: false,
+            status: null
+        }
+    },
+    methods: {
+        async submit() {
+            this.sending = true
+            this.fieldErrors = {}
+            this.status = null
+            try {
+                const result = await sendContactMessage(this.form)
+                this.status = { type: "success", message: result.message }
+                this.form = emptyForm()
+            } catch (err) {
+                this.fieldErrors = err.fields ?? {}
+                this.status = { type: "error", message: err.message }
+            } finally {
+                this.sending = false
+            }
+        }
     }
 }
 </script>
@@ -324,6 +361,27 @@ textarea:active~label {
     top: -28px;
     left: 5px;
     font-size: 13px;
+}
+
+input:not(:placeholder-shown)~label,
+textarea:not(:placeholder-shown)~label {
+    top: -28px;
+    left: 5px;
+    font-size: 13px;
+}
+
+.field-error {
+    position: absolute;
+    left: 5px;
+    bottom: -4px;
+    line-height: 1;
+    font-size: 12px;
+    color: #b91c1c;
+}
+
+form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
 

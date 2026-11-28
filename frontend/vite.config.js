@@ -13,4 +13,10 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
+  server: {
+    // Send /api requests to the Express backend during development
+    proxy: {
+      '/api': 'http://localhost:3000',
+    },
+  },
 })
